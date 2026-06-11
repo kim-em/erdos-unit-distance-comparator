@@ -1,0 +1,12 @@
+name = "ErdosUnitDistanceComparator"
+defaultTargets = ["Challenge", "Solution"]
+
+[[require]]
+name = "ErdosUnitDistance"
+git = "https://github.com/kim-em/erdos-unit-distance.git"
+
+[[lean_lib]]
+name = "Challenge"
+
+[[lean_lib]]
+name = "Solution"
