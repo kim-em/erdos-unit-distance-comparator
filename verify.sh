@@ -21,14 +21,24 @@ fi
 (cd "$WORK/comparator" && lake build)
 (cd "$WORK/lean4export" && lake build)
 
-if ! command -v landrun >/dev/null; then
-  if [ ! -x "$WORK/landrun" ]; then
-    curl -sL -o "$WORK/landrun" \
-      https://github.com/Zouuup/landrun/releases/download/v0.1.14/landrun-linux-amd64
-    chmod +x "$WORK/landrun"
-  fi
-  export PATH="$WORK:$PATH"
+# landrun, wrapped to grant the dynamic loader paths that its -ldd
+# resolution can miss (the ELF interpreter on Ubuntu; the Nix store on
+# NixOS).  Without execute permission on the interpreter, every execve
+# inside the sandbox fails with EACCES.
+if [ ! -x "$WORK/landrun-bin" ]; then
+  curl -sL -o "$WORK/landrun-bin" \
+    https://github.com/Zouuup/landrun/releases/download/v0.1.14/landrun-linux-amd64
+  chmod +x "$WORK/landrun-bin"
 fi
+EXTRA=""
+for d in /lib64 /lib /usr/lib /nix/store; do
+  [ -e "$d" ] && EXTRA="$EXTRA --rox $d"
+done
+printf '#!/usr/bin/env bash\nexec "%s/landrun-bin"%s "$@"\n' "$WORK" "$EXTRA" \
+  > "$WORK/landrun"
+chmod +x "$WORK/landrun"
+export COMPARATOR_LANDRUN="$WORK/landrun"
+export PATH="$WORK:$PATH"
 
 export PATH="$WORK/lean4export/.lake/build/bin:$PATH"
 
