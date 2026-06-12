@@ -22,4 +22,6 @@ jobs:
           path: ~/.cache/erdos-comparator
           key: comparator-${{ hashFiles('lean-toolchain') }}
       - name: Run comparator
+        env:
+          LANDRUN_LOG_LEVEL: debug
         run: ./verify.sh
