@@ -1,0 +1,104 @@
+# Provenance metadata for the formalization of Alpöge's disproof of the
+# uniform-constant Erdős unit-distance conjecture.
+
+result:
+  name: erdos_unit_distance_uniform_constant_false
+  statement: >
+    For every C > 0 and every N there exist n ≥ N and an n-point set
+    P ⊆ ℝ² whose number of unit-distance pairs exceeds
+    n^(1 + C / log log n). This is the literal negation of Erdős's 1946
+    conjectured bound ν(n) ≤ n^(1 + C/log log n) for an absolute constant C.
+  compared_declaration: UnitDistance.erdos_unit_distance_uniform_constant_false
+  axioms: [propext, Classical.choice, Quot.sound]
+  sorries: 0
+  lean_toolchain: leanprover/lean4:v4.31.0-rc2
+  scope_limitations: >
+    This is strictly weaker than a fixed-power improvement n^(1+δ).
+    It refutes only the uniform-constant form of the conjecture; it does not
+    formalize the stronger fixed-power-gain result.
+
+artifacts:
+  submission_repository: https://github.com/kim-em/erdos-unit-distance-comparator
+  proof_repository: https://github.com/kim-em/erdos-unit-distance
+  proof_commit: 34b4587bbd0740efb9c06a519a8ee14a3eff8cd7
+  challenge: Challenge.lean
+  solution: Solution.lean
+  comparator_config: comparator.json
+  verification: ./verify.sh
+
+license: Apache-2.0
+
+dates:
+  formalized: 2026-06-11
+  migrated_to_tauceti: 2026-06-17
+  wall_clock: about 9.5 hours in one orchestrating session
+
+sources:
+  - kind: informal_proof
+    author: Levent Alpöge
+    title: Integral points on norm-one tori and the Erdős unit-distance exponent
+    year: 2026
+    url: https://x.com/__alpoge__/status/2064409100562366543
+    note: >
+      One-page proof. A transcription is archived at the pinned proof commit:
+      https://github.com/kim-em/erdos-unit-distance/blob/34b4587bbd0740efb9c06a519a8ee14a3eff8cd7/informal-proof.md
+  - kind: pointer
+    author: Junyan Xu
+    url: https://leanprover.zulipchat.com/#narrow/channel/219941-Machine-Learning-for-Theorem-Proving/topic/Logical.20Intelligence.20partial.20proof.20of.20unit.20distance.20result/near/601574339
+    note: Zulip message suggesting that the proof might be within reach of Aristotle
+  - kind: original_conjecture
+    author: Paul Erdős
+    title: On sets of distances of n points
+    journal: Amer. Math. Monthly 53 (1946), 248–250
+  - kind: context
+    author: OpenAI
+    title: Planar Point Sets with Many Unit Distances
+    year: 2026
+    url: https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-proof.pdf
+    note: The stronger fixed-power-gain refutation; not used in this proof
+  - kind: dependency
+    title: PrimeNumberTheoremAnd
+    url: https://github.com/kim-em/PrimeNumberTheoremAnd
+    note: Supplies the required prime-number-theorem input in arithmetic progressions
+  - kind: dependency
+    title: TauCeti
+    url: https://github.com/FormalFrontier/TauCeti
+    note: >
+      Supplies reusable effective ideal-count, class-number, discriminant,
+      unit-square, conjugate-transversal, and multiquadratic square-class results
+  - kind: dependency
+    title: Mathlib
+    url: https://github.com/leanprover-community/mathlib4
+
+provenance:
+  human_review: >
+    No independent specialist or journal-style human review is claimed.
+    The directing session checked statements and every returned Lean artifact;
+    Comparator independently checks the advertised statement and kernel proof.
+  attribution_note: >
+    Per-lemma attribution is recorded in the pinned proof repository's Git
+    history. Several general lemmas were subsequently upstreamed to Tau Ceti.
+  director:
+    tool: Claude Code
+    provider: Anthropic
+    model: claude-fable-5[1m]
+    role: >
+      Statement design; decomposition into intermediate lemmas; verification,
+      integration, migration, and audit of prover results; several hand proofs.
+  provers:
+    - tool: Aristotle
+      provider: Harmonic
+      tasks_submitted: 31
+      tasks_cancelled: 7
+      lemmas_proved: 22
+      highlights: >
+        The grid-pigeonhole geometric core, ideal and discriminant bounds,
+        arithmetic construction, unramifiedness and transversal counting.
+    - tool: Codex CLI
+      provider: OpenAI
+      model: gpt-5.5
+      sessions: 7
+      highlights: >
+        The analytic prime-count input, square-class descent and
+        multiquadratic-degree bridge, plus a statement audit that found two
+        bugs in an intermediate inequality before prover time was spent.
