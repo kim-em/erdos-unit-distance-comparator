@@ -23,7 +23,8 @@ result:
     would imply the corresponding bound for a positive C.
   compared_declaration: UnitDistance.erdos_unit_distance_uniform_constant_false
   axioms: [propext, Classical.choice, Quot.sound]
-  sorries: 0
+  solution_sorries: 0
+  challenge_statement_holes: 1
   lean_toolchain: leanprover/lean4:v4.31.0-rc2
   scope_limitations: >
     This is strictly weaker than a fixed-power improvement n^(1+δ).
@@ -62,12 +63,18 @@ sources:
       The official Anthropic technical paper below provides a stable, fuller
       account of the same norm-one-torus construction.
   - kind: archival_proof
-    authors: [Anthropic]
+    authors: [Levent Alpöge]
     title: Integral points on norm-one tori and the Erdős unit-distance exponent
     year: 2026
     url: https://www-cdn.anthropic.com/files/4zrzovbb/website/ca35f196125c899a5ad11f011080202a652aef02.pdf
     id: anthropic:ca35f196125c899a5ad11f011080202a652aef02
-    note: Official 13-page technical paper giving the stable full account.
+    note: >
+      Official 13-page technical paper giving the stable full account. The URL
+      is a content-addressed Anthropic CDN file. On 2026-08-01 the operator
+      downloaded it and extracted the title and theorem text locally, but the
+      PDF itself contains no author byline. It is attributed here to Alpöge to
+      match the original post; Claude Mythos produced the paper under his
+      direction, according to contemporary accounts.
   - kind: pointer
     author: Junyan Xu
     authors: [Junyan Xu]
@@ -81,6 +88,18 @@ sources:
     title: On sets of distances of n points
     journal: Amer. Math. Monthly 53 (1946), 248–250
     id: journal:Amer.Math.Monthly.53.1946.248-250
+    note: >
+      Erdős's rescaled integer-grid construction gives the
+      n^(1+c/log log n) lower bound that motivated the conjectured matching
+      upper bound.
+  - kind: classical_upper_bound
+    authors: [Joel Spencer, Endre Szemerédi, William T. Trotter]
+    title: Unit distances in the Euclidean plane
+    year: 1984
+    id: bibliographic:Spencer-Szemeredi-Trotter-1984-293-303
+    note: >
+      Establishes the classical O(n^(4/3)) upper bound, the standing general
+      upper limit against which unit-distance lower bounds are compared.
   - kind: context
     author: OpenAI
     authors: [OpenAI]
@@ -89,6 +108,25 @@ sources:
     url: https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-proof.pdf
     id: https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-proof.pdf
     note: The stronger fixed-power-gain refutation; not used in this proof
+  - kind: human_verified_companion
+    authors:
+      - Noga Alon
+      - Thomas Bloom
+      - William T. Gowers
+      - Daniel Litt
+      - Will Sawin
+      - Arul Shankar
+      - Jacob Tsimerman
+      - Victor Wang
+      - Melanie Matchett Wood
+    title: Remarks on the disproof of the unit distance conjecture
+    year: 2026
+    url: https://arxiv.org/abs/2605.20695
+    id: arXiv:2605.20695
+    note: >
+      Human-verified companion account of the stronger fixed-power disproof.
+      Its result implies the weaker uniform-constant statement compared here,
+      but its proof is not used by this formalization.
   - kind: dependency
     title: PrimeNumberTheoremAnd
     authors: [PrimeNumberTheoremAnd contributors]
@@ -129,6 +167,7 @@ literature_search:
     - title: Lean FRO evaluation entry for the unit-distance disproof
       authors: [Lean FRO]
       id: https://lean-lang.org/eval/problems/erdos_unit_distance_conjecture_false/
+      accessed_at: 2026-08-01
       relationship: >
         A later evaluation entry targeting the stronger fixed-power form; its
         listed solution is independent of this development and still contains
@@ -136,15 +175,22 @@ literature_search:
     - title: Aleph Prover work on the Erdős disproof
       authors: [Logical Intelligence]
       id: https://logicalintelligence.com/blog/aleph-prover-erdos-disproof-lean-4-formal-methods
+      accessed_at: 2026-08-01
       relationship: >
-        Parallel prover work on the unit-distance disproof. No code or proof
-        artifacts from it are used here.
-    - title: Manual formalization submitted to Formal Conjectures
-      authors: [Xena Project]
+        Parallel prover work on the unit-distance disproof, conditional on the
+        Golod–Shafarevich theorem and the Shafarevich rank relation as two
+        unformalized class-field-theory hypotheses. No code or proof artifacts
+        from it are used here.
+    - title: Boris Alexeev's Sol-assisted Lean formalization
+      authors: [Boris Alexeev]
+      affiliation: OpenAI
       id: https://xenaproject.wordpress.com/2026/07/20/human-mathematicians-are-being-outcounterexampled/
+      accessed_at: 2026-08-01
+      commentary_by: Xena Project
       relationship: >
-        A separate later formalization discussed by the Xena Project. No code
-        or proof artifacts from it are used here.
+        A separate later roughly 1.2-million-line formalization created by
+        Boris Alexeev steering OpenAI's Sol model, as described in this Xena
+        Project commentary. No code or proof artifacts from it are used here.
 
 automation:
   methods:
