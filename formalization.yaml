@@ -9,7 +9,7 @@ project:
   license: Apache-2.0
 
 classification:
-  arxiv: [math.NOTREAL]
+  arxiv: [math.CO]
   msc2020: [52C10]
 
 result:
