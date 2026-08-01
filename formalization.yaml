@@ -17,8 +17,10 @@ result:
   statement: >
     For every C > 0 and every N there exist n ≥ N and an n-point set
     P ⊆ ℝ² whose number of unit-distance pairs exceeds
-    n^(1 + C / log log n). This is the literal negation of Erdős's 1946
-    conjectured bound ν(n) ≤ n^(1 + C/log log n) for an absolute constant C.
+    n^(1 + C / log log n). This refutes Erdős's 1946 conjectured bound
+    ν(n) ≤ n^(1 + C/log log n) for an absolute constant C. The theorem
+    quantifies over C > 0; this is harmless because any bound with C ≤ 0
+    would imply the corresponding bound for a positive C.
   compared_declaration: UnitDistance.erdos_unit_distance_uniform_constant_false
   axioms: [propext, Classical.choice, Quot.sound]
   sorries: 0
@@ -51,10 +53,21 @@ sources:
     title: Integral points on norm-one tori and the Erdős unit-distance exponent
     year: 2026
     url: https://x.com/__alpoge__/status/2064409100562366543
-    id: https://x.com/__alpoge__/status/2064409100562366543
+    id: git:github.com/kim-em/erdos-unit-distance@34b4587bbd0740efb9c06a519a8ee14a3eff8cd7:informal-proof.md
     note: >
-      One-page proof. A transcription is archived at the pinned proof commit:
-      https://github.com/kim-em/erdos-unit-distance/blob/34b4587bbd0740efb9c06a519a8ee14a3eff8cd7/informal-proof.md
+      One-page proof originally posted on X. No DOI or arXiv version of that
+      one-page source was located as of 2026-08-01. An exact transcription is
+      durably pinned at
+      https://github.com/kim-em/erdos-unit-distance/blob/34b4587bbd0740efb9c06a519a8ee14a3eff8cd7/informal-proof.md.
+      The official Anthropic technical paper below provides a stable, fuller
+      account of the same norm-one-torus construction.
+  - kind: archival_proof
+    authors: [Anthropic]
+    title: Integral points on norm-one tori and the Erdős unit-distance exponent
+    year: 2026
+    url: https://www-cdn.anthropic.com/files/4zrzovbb/website/ca35f196125c899a5ad11f011080202a652aef02.pdf
+    id: anthropic:ca35f196125c899a5ad11f011080202a652aef02
+    note: Official 13-page technical paper giving the stable full account.
   - kind: pointer
     author: Junyan Xu
     authors: [Junyan Xu]
@@ -81,12 +94,21 @@ sources:
     authors: [PrimeNumberTheoremAnd contributors]
     url: https://github.com/kim-em/PrimeNumberTheoremAnd
     id: https://github.com/kim-em/PrimeNumberTheoremAnd
-    note: Supplies the required prime-number-theorem input in arithmetic progressions
+    upstream: https://github.com/AlexKontorovich/PrimeNumberTheoremAnd
+    revision: e025424629cafbfa6ad98eee5fb4f22e1ad6086b
+    note: >
+      This personal GitHub fork was identical to the upstream repository at
+      the pinned revision; no local changes were used. It supplies the
+      prime-number-theorem input in arithmetic progressions. The fork contains
+      sorried declarations in Wiener.lean, but they are not in the axiom
+      closure of the compared theorem, which Comparator accepted using only
+      propext, Quot.sound, and Classical.choice.
   - kind: dependency
     title: TauCeti
     authors: [FormalFrontier contributors]
     url: https://github.com/FormalFrontier/TauCeti
     id: https://github.com/FormalFrontier/TauCeti
+    revision: 221bb56a017bb794421eac4fa543d7a5e85add75
     note: >
       Supplies reusable effective ideal-count, class-number, discriminant,
       unit-square, conjugate-transversal, and multiquadratic square-class results
@@ -95,6 +117,34 @@ sources:
     authors: [Mathlib contributors]
     url: https://github.com/leanprover-community/mathlib4
     id: https://github.com/leanprover-community/mathlib4
+    revision: 0be66d77ba290828a5260d883ace636f56bce89a
+
+literature_search:
+  searched_at: 2026-08-01
+  novelty: unknown
+  summary: >
+    A web search found several parallel or later formalizations. This
+    development makes no novelty claim. It imports no code from any of them.
+  prior_formalizations:
+    - title: Lean FRO evaluation entry for the unit-distance disproof
+      authors: [Lean FRO]
+      id: https://lean-lang.org/eval/problems/erdos_unit_distance_conjecture_false/
+      relationship: >
+        A later evaluation entry targeting the stronger fixed-power form; its
+        listed solution is independent of this development and still contains
+        sorry according to the public entry.
+    - title: Aleph Prover work on the Erdős disproof
+      authors: [Logical Intelligence]
+      id: https://logicalintelligence.com/blog/aleph-prover-erdos-disproof-lean-4-formal-methods
+      relationship: >
+        Parallel prover work on the unit-distance disproof. No code or proof
+        artifacts from it are used here.
+    - title: Manual formalization submitted to Formal Conjectures
+      authors: [Xena Project]
+      id: https://xenaproject.wordpress.com/2026/07/20/human-mathematicians-are-being-outcounterexampled/
+      relationship: >
+        A separate later formalization discussed by the Xena Project. No code
+        or proof artifacts from it are used here.
 
 automation:
   methods:
@@ -107,9 +157,23 @@ review:
 
 provenance:
   human_review: >
-    No independent specialist or journal-style human review is claimed.
-    The directing session checked statements and every returned Lean artifact;
-    Comparator independently checks the advertised statement and kernel proof.
+    Kim Morrison read the human-auditable Challenge statement, compared it
+    against the informal claim and scope limitations, and inspected every
+    returned Lean artifact before integration. No independent specialist or
+    journal-style human review of the mathematics is claimed.
+  automated_checks: >
+    The directing AI sessions checked intermediate statements and artifacts.
+    Comparator independently checks the advertised declaration and kernel
+    proof, including its axiom closure.
+  fidelity_gaps: >
+    The Lean development follows the one-page proof's norm-one-torus and
+    integral-point construction at a high level, but it is not a line-by-line
+    transcription. It replaces informal estimates with explicit effective
+    ideal-count, class-number, discriminant, unit-square,
+    conjugate-transversal, and multiquadratic square-class lemmas, many supplied
+    by the pinned TauCeti dependency. It proves only the uniform-constant
+    refutation recorded above, not the stronger fixed-power result. No other
+    strengthening or weakening of the headline statement is claimed.
   attribution_note: >
     Per-lemma attribution is recorded in the pinned proof repository's Git
     history. Several general lemmas were subsequently upstreamed to Tau Ceti.

@@ -15,10 +15,12 @@ For a finite `P ⊆ ℝ²`, `unitDist P` counts unordered pairs of points of
 
 Erdős (1946) conjectured `ν(n) ≤ n^(1 + C / log log n)` for some
 absolute constant `C` and all sufficiently large `n`.  The theorem below
-is the literal negation: for every `C > 0` there are arbitrarily large
+refutes this bound: for every `C > 0` there are arbitrarily large
 `n` admitting `n`-point sets with more than `n^(1 + C / log log n)`
 unit-distance pairs (L. Alpöge, *Integral points on norm-one tori and
-the Erdős unit-distance exponent*, 2026).
+the Erdős unit-distance exponent*, 2026).  Restricting to positive `C`
+is harmless because a bound with `C ≤ 0` would imply one with positive
+`C`.
 -/
 
 open scoped Classical
