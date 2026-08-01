@@ -1,6 +1,17 @@
 # Provenance metadata for the formalization of Alpöge's disproof of the
 # uniform-constant Erdős unit-distance conjecture.
 
+version: v0.3
+
+project:
+  name: Formalization of the disproof of the uniform-constant Erdős unit-distance conjecture
+  authors: [Kim Morrison]
+  license: Apache-2.0
+
+classification:
+  arxiv: [math.NOTREAL]
+  msc2020: [52C10]
+
 result:
   name: erdos_unit_distance_uniform_constant_false
   statement: >
@@ -36,39 +47,63 @@ dates:
 sources:
   - kind: informal_proof
     author: Levent Alpöge
+    authors: [Levent Alpöge]
     title: Integral points on norm-one tori and the Erdős unit-distance exponent
     year: 2026
     url: https://x.com/__alpoge__/status/2064409100562366543
+    id: https://x.com/__alpoge__/status/2064409100562366543
     note: >
       One-page proof. A transcription is archived at the pinned proof commit:
       https://github.com/kim-em/erdos-unit-distance/blob/34b4587bbd0740efb9c06a519a8ee14a3eff8cd7/informal-proof.md
   - kind: pointer
     author: Junyan Xu
+    authors: [Junyan Xu]
+    title: Lean Zulip discussion of the unit-distance result
     url: https://leanprover.zulipchat.com/#narrow/channel/219941-Machine-Learning-for-Theorem-Proving/topic/Logical.20Intelligence.20partial.20proof.20of.20unit.20distance.20result/near/601574339
+    id: https://leanprover.zulipchat.com/#narrow/channel/219941-Machine-Learning-for-Theorem-Proving/topic/Logical.20Intelligence.20partial.20proof.20of.20unit.20distance.20result/near/601574339
     note: Zulip message suggesting that the proof might be within reach of Aristotle
   - kind: original_conjecture
     author: Paul Erdős
+    authors: [Paul Erdős]
     title: On sets of distances of n points
     journal: Amer. Math. Monthly 53 (1946), 248–250
+    id: journal:Amer.Math.Monthly.53.1946.248-250
   - kind: context
     author: OpenAI
+    authors: [OpenAI]
     title: Planar Point Sets with Many Unit Distances
     year: 2026
     url: https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-proof.pdf
+    id: https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-proof.pdf
     note: The stronger fixed-power-gain refutation; not used in this proof
   - kind: dependency
     title: PrimeNumberTheoremAnd
+    authors: [PrimeNumberTheoremAnd contributors]
     url: https://github.com/kim-em/PrimeNumberTheoremAnd
+    id: https://github.com/kim-em/PrimeNumberTheoremAnd
     note: Supplies the required prime-number-theorem input in arithmetic progressions
   - kind: dependency
     title: TauCeti
+    authors: [FormalFrontier contributors]
     url: https://github.com/FormalFrontier/TauCeti
+    id: https://github.com/FormalFrontier/TauCeti
     note: >
       Supplies reusable effective ideal-count, class-number, discriminant,
       unit-square, conjugate-transversal, and multiquadratic square-class results
   - kind: dependency
     title: Mathlib
+    authors: [Mathlib contributors]
     url: https://github.com/leanprover-community/mathlib4
+    id: https://github.com/leanprover-community/mathlib4
+
+automation:
+  methods:
+    - method: Claude Code orchestration
+    - method: Aristotle theorem proving
+    - method: Codex CLI theorem proving and audit
+
+review:
+  status: self-assessed
 
 provenance:
   human_review: >
