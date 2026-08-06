@@ -63,28 +63,31 @@ related_formalizations:
     revision: 2062b0e6c9770c81e397bfe41148e90b92ca0567
     note: >
       Boris Alexeev's Lean formalization of the same OpenAI proof, announced on
-      the Lean Zulip and submitted to lean-eval on 2026-06-26, produced with
-      Codex with a human in the loop. It proves the stronger fixed-power
+      the Lean Zulip on 2026-06-26 and verified on lean-eval the same day. He
+      reports it was produced with Codex, with himself as the one person in the
+      loop, over approximately a month. It proves the stronger fixed-power
       statement, and proves it outright: the class field theory is formalized
       rather than assumed, the proof path carries no sorries, and the three
-      axiom declarations in the repository sit in a module the proof does not
-      import.
+      axiom declarations in the repository, which state Remark II.3.12 of
+      Milne's "Class Field Theory", sit in a module the proof does not import.
 
       This is a strictly stronger result than the one recorded here, already
       formalized, and this submission does not rest on being first or
       strongest. What differs is the route: an elementary one-page argument,
-      formalized whole, against roughly two million lines reconstructing class
-      field theory.
+      formalized whole, against 1.2 million lines reconstructing class field
+      theory, of which he reports roughly 800,000 are imported by the final
+      result and 10,000 to 40,000 are the novel part of the argument.
   - id: https://github.com/logical-intelligence/erdos-unit-distance
     relationship: independent
     revision: b6493074dd103ca32ea4f5e9b0bc9cb3a0379f2e
     note: >
       Logical Intelligence's Lean 4 formalization of OpenAI's 2026 disproof,
-      announced in May 2026 and following a different route to a different
-      statement. Theirs is the stronger conclusion: a fixed power gain, that
+      produced with their Aleph Prover, announced on 2026-05-28 at roughly
+      33,000 lines, and following a different route to a different statement.
+      Theirs is the stronger conclusion: a fixed power gain, that
       {n : 0 < n and nu(n) >= n^(1+delta)} is infinite for some delta > 0,
       by way of class field towers. Ours is the uniform-constant negation,
-      which is strictly weaker and follows from theirs.
+      which is strictly weaker and which their conclusion implies.
 
       The trust bases differ in the other direction. Their `main_theorem`
       takes the Golod-Shafarevich inequality and Shafarevich's relation-rank
