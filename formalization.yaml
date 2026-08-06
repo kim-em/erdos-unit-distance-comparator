@@ -138,6 +138,14 @@ sources:
       multiquadratic CM fields and a pigeonhole on ideal classes, and needs no
       class field tower.
 
+      Using class field towers, it is easily mistaken for the OpenAI result,
+      and it is not: the exponent it produces is 1 + o(1), and it says so
+      ("our construction does not threaten the Spencer-Szemeredi-Trotter
+      ceiling: the exponent we produce is 1 + o(1)", and Remark 8.1 leaves
+      open whether more can be extracted). It is strictly between the one-page
+      argument and the fixed-power refutation, not a third route to the
+      latter.
+
       The submitter has read it for coherence only. Nothing here asserts it is
       correct, and no part of the formalization depends on it.
   - title: On sets of distances of n points
