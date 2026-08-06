@@ -1,5 +1,38 @@
-# Provenance metadata for the formalization of Alpöge's disproof of the
-# uniform-constant Erdős unit-distance conjecture.
+# Provenance metadata for the Comparator wrapper around the formalization of
+# Alpöge's disproof of the uniform-constant Erdős unit-distance conjecture.
+#
+# Follows the mathlib-initiative formalization.yaml v0.3 self-reporting format.
+# The mathematical work lives in kim-em/erdos-unit-distance, which this
+# repository exists only to expose through leanprover/comparator; its own
+# formalization.yaml carries the per-lemma attribution and resource usage.
+
+project:
+  name: erdos-unit-distance-comparator
+  authors:
+    - name: Kim Morrison
+      github: kim-em
+  responsible_maintainers:
+    - name: Kim Morrison
+      github: kim-em
+  license: Apache-2.0
+  short_description: >
+    Comparator wrapper certifying that the ErdosUnitDistance library proves the
+    literal negation of the uniform-constant form of Erdős's 1946 unit-distance
+    conjecture, from a Mathlib-only statement of that negation.
+
+repository:
+  role: thin-wrapper
+  substantive_formalization:
+    id: kim-em/erdos-unit-distance
+    revision: 34b4587bbd0740efb9c06a519a8ee14a3eff8cd7
+    note: >
+      The proof library. This repository adds only Challenge.lean, which states
+      the theorem using Mathlib alone, and Solution.lean, which connects that
+      statement to the library's theorem by definitional equality.
+
+classification:
+  arxiv: [math.CO, math.MG]
+  msc2020: [52C10, 11R21]
 
 result:
   name: erdos_unit_distance_uniform_constant_false
@@ -7,98 +40,120 @@ result:
     For every C > 0 and every N there exist n ≥ N and an n-point set
     P ⊆ ℝ² whose number of unit-distance pairs exceeds
     n^(1 + C / log log n). This is the literal negation of Erdős's 1946
-    conjectured bound ν(n) ≤ n^(1 + C/log log n) for an absolute constant C.
+    conjectured bound ν(n) ≤ n^(1 + C / log log n) for an absolute constant C.
   compared_declaration: UnitDistance.erdos_unit_distance_uniform_constant_false
   axioms: [propext, Classical.choice, Quot.sound]
   sorries: 0
-  lean_toolchain: leanprover/lean4:v4.31.0-rc2
   scope_limitations: >
-    This is strictly weaker than a fixed-power improvement n^(1+δ).
-    It refutes only the uniform-constant form of the conjecture; it does not
-    formalize the stronger fixed-power-gain result.
-
-artifacts:
-  submission_repository: https://github.com/kim-em/erdos-unit-distance-comparator
-  proof_repository: https://github.com/kim-em/erdos-unit-distance
-  proof_commit: 34b4587bbd0740efb9c06a519a8ee14a3eff8cd7
-  challenge: Challenge.lean
-  solution: Solution.lean
-  comparator_config: comparator.json
-  verification: ./verify.sh
-
-license: Apache-2.0
-
-dates:
-  formalized: 2026-06-11
-  migrated_to_tauceti: 2026-06-17
-  wall_clock: about 9.5 hours in one orchestrating session
-
-sources:
-  - kind: informal_proof
-    author: Levent Alpöge
-    title: Integral points on norm-one tori and the Erdős unit-distance exponent
-    year: 2026
-    url: https://x.com/__alpoge__/status/2064409100562366543
-    note: >
-      One-page proof. A transcription is archived at the pinned proof commit:
-      https://github.com/kim-em/erdos-unit-distance/blob/34b4587bbd0740efb9c06a519a8ee14a3eff8cd7/informal-proof.md
-  - kind: pointer
-    author: Junyan Xu
-    url: https://leanprover.zulipchat.com/#narrow/channel/219941-Machine-Learning-for-Theorem-Proving/topic/Logical.20Intelligence.20partial.20proof.20of.20unit.20distance.20result/near/601574339
-    note: Zulip message suggesting that the proof might be within reach of Aristotle
-  - kind: original_conjecture
-    author: Paul Erdős
-    title: On sets of distances of n points
-    journal: Amer. Math. Monthly 53 (1946), 248–250
-  - kind: context
-    author: OpenAI
-    title: Planar Point Sets with Many Unit Distances
-    year: 2026
-    url: https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-proof.pdf
-    note: The stronger fixed-power-gain refutation; not used in this proof
-  - kind: dependency
-    title: PrimeNumberTheoremAnd
-    url: https://github.com/kim-em/PrimeNumberTheoremAnd
-    note: Supplies the required prime-number-theorem input in arithmetic progressions
-  - kind: dependency
-    title: TauCeti
-    url: https://github.com/FormalFrontier/TauCeti
-    note: >
-      Supplies reusable effective ideal-count, class-number, discriminant,
-      unit-square, conjugate-transversal, and multiquadratic square-class results
-  - kind: dependency
-    title: Mathlib
-    url: https://github.com/leanprover-community/mathlib4
+    Strictly weaker than a fixed-power improvement ν(n) ≥ n^(1+δ). It refutes
+    only the uniform-constant form of the conjecture, and does not formalize
+    the stronger fixed-power-gain result (OpenAI 2026, via class field towers),
+    which remains open in Lean. Alpöge's one-page argument deliberately trades
+    the power gain for elementary inputs, and that is what is formalized.
 
 provenance:
-  human_review: >
-    No independent specialist or journal-style human review is claimed.
-    The directing session checked statements and every returned Lean artifact;
-    Comparator independently checks the advertised statement and kernel proof.
-  attribution_note: >
-    Per-lemma attribution is recorded in the pinned proof repository's Git
-    history. Several general lemmas were subsequently upstreamed to Tau Ceti.
-  director:
-    tool: Claude Code
-    provider: Anthropic
-    model: claude-fable-5[1m]
-    role: >
-      Statement design; decomposition into intermediate lemmas; verification,
-      integration, migration, and audit of prover results; several hand proofs.
-  provers:
-    - tool: Aristotle
-      provider: Harmonic
-      tasks_submitted: 31
-      tasks_cancelled: 7
-      lemmas_proved: 22
-      highlights: >
-        The grid-pigeonhole geometric core, ideal and discriminant bounds,
-        arithmetic construction, unramifiedness and transversal counting.
-    - tool: Codex CLI
-      provider: OpenAI
-      model: gpt-5.5
-      sessions: 7
-      highlights: >
-        The analytic prime-count input, square-class descent and
-        multiquadratic-degree bridge, plus a statement audit that found two
-        bugs in an intermediate inequality before prover time was spent.
+  result_origin: source-based
+  related_formalizations: []
+
+sources:
+  - title: Integral points on norm-one tori and the Erdős unit-distance exponent
+    authors: [Levent Alpöge]
+    year: 2026
+    url: https://x.com/__alpoge__/status/2064409100562366543
+    relationship: formalizes
+    note: >
+      A one-page proof. The only durable copy cited here is the transcription
+      in informal-proof.md in the proof repository, which has not been
+      independently checked against the original by anyone other than the
+      submitter.
+  - title: On sets of distances of n points
+    authors: [Paul Erdős]
+    year: 1946
+    identifier: Amer. Math. Monthly 53 (1946), 248-250
+    relationship: background
+    note: The conjecture whose uniform-constant form this refutes.
+  - title: Planar Point Sets with Many Unit Distances
+    authors: [OpenAI]
+    year: 2026
+    url: https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-proof.pdf
+    relationship: background
+    note: >
+      The stronger fixed-power-gain refutation. Not used here, and the
+      authorship of the PDF is an inference: it carries no byline.
+
+automation:
+  methods:
+    - method: agent
+      framework: Claude Code (Anthropic)
+      models: [claude-fable-5]
+      tool_setup: >
+        The orchestrating session, and the only one: both this repository and
+        the proof library came out of it. Designed every statement, verified
+        all 27 intermediate lemmas, generated a project per open goal,
+        integrated the provers' results, performed the v4.28 to master ports,
+        and proved a number of lemmas directly.
+      cost:
+        wall_time: >
+          2026-06-11 03:19 UTC to 2026-06-12 07:20 UTC. 1,132 API calls, of
+          which 1,120 on 06-11 for the formalization itself; the remaining 19
+          calls on 06-12 were this repository's landrun fix in verify.sh.
+        tokens: >
+          1,514,396 output, 231,309 fresh input, 8,752,408 cache write,
+          563,366,603 cache read.
+    - method: agent
+      framework: Aristotle (Harmonic), CLI v2
+      tool_setup: >
+        Prover, targeting Lean v4.28.0. 31 tasks submitted, 7 cancelled, 22
+        lemmas proved, including the key inequality, the grid-pigeonhole
+        geometric core, and the Rankin-style ideal count.
+      cost:
+        tokens: not exposed by the service, so this part of the cost is unmeasured
+    - method: agent
+      framework: Codex CLI (OpenAI)
+      models: [gpt-5.5]
+      tool_setup: >
+        Prover and auditor. Eight rollouts on 2026-06-11 between 03:50 and
+        12:42 UTC. Closed the analytic input, the square-class descent and the
+        multiquadratic degree bridge, ported Framework.lean to v4.31.0-rc2,
+        and audited the key inequality at the statement level before any prover
+        time was spent on it, catching two bugs.
+      cost:
+        tokens: >
+          22,572,759 input of which 21,587,328 cached, so 985,431 fresh;
+          96,171 output, including 34,865 reasoning.
+  notes: >
+    The formalization was completed on 2026-06-11 in a single working day, and
+    migrated to Lean v4.31.0-rc2 on 2026-06-17. Per-lemma attribution is in the
+    git history of both repositories: each integration commit names the prover.
+
+    The figures above are measured from the session and rollout logs after the
+    fact, and supersede those recorded in the proof library's own
+    formalization.yaml. Those were written part way through the session, on
+    2026-06-11 at 12:11 UTC, so they undercount the directing session, which
+    ran for another day; and they overcount Codex, because that measurement
+    matched rollouts by text search and swept in unrelated sessions that
+    happened to mention the repository in passing.
+
+review:
+  status: self-assessed
+  reviewers:
+    - name: Kim Morrison
+      github: kim-em
+  notes: >
+    No independent human review of the mathematics. The submitter, the
+    directing session's operator, and the author of this metadata are the same
+    person. The Lean proof is machine-checked and sorry-free, and Comparator
+    independently certifies that the library proves the Mathlib-only statement
+    in Challenge.lean from the three standard axioms; neither of those is a
+    check on whether the informal argument is correct or the statement is the
+    right formalization of Erdős's conjecture.
+
+fidelity:
+  divergences: >
+    The pinned dependency kim-em/PrimeNumberTheoremAnd contains sorried
+    declarations in Wiener.lean, but they are not in the axiom closure of the
+    compared theorem: the exported axiom set is exactly propext, Quot.sound and
+    Classical.choice. Challenge.lean contains one `sorry`, standing for the
+    proof that Solution.lean supplies; comparator.json declares no
+    definition_names, so nothing in the statement is left open for the solution
+    to instantiate.
