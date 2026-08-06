@@ -107,10 +107,47 @@ sources:
     url: https://x.com/__alpoge__/status/2064409100562366543
     relationship: formalizes
     note: >
-      A one-page proof. The only durable copy cited here is the transcription
-      in informal-proof.md in the proof repository, which has not been
-      independently checked against the original by anyone other than the
-      submitter.
+      A one-page proof, and the source this work formalizes. The only durable
+      copy cited here is the transcription in informal-proof.md in the proof
+      repository, which has not been independently checked against the original
+      by anyone other than the submitter.
+
+      A second, longer document carries this same title; see the next entry.
+      They are not the same argument, and this is the one formalized here.
+  - title: Integral points on norm-one tori and the Erdős unit-distance exponent
+    year: 2026
+    url: https://www-cdn.anthropic.com/files/4zrzovbb/website/ca35f196125c899a5ad11f011080202a652aef02.pdf
+    relationship: background
+    note: >
+      A distinct 13-page paper carrying the identical title, not the one-page
+      argument above and not used here. Recorded so the two are not mistaken
+      for one another.
+
+      It carries no byline and no acknowledgements, so its authorship is
+      unknown to the submitter; do not read the attribution of the one-page
+      argument as applying to it. Its PDF records a creation date of
+      2026-05-26.
+
+      It is a different construction reaching a stronger conclusion. Its
+      Theorem 1.1 gives ν(n) ≥ n^(1 + c₀ log log log n / log log n) along an
+      infinite set of n, from which the uniform-constant refutation formalized
+      here follows as a stated corollary. It builds its fields from an
+      infinite unramified class field tower of bounded root discriminant,
+      citing van der Corput (1936), Louboutin (2001), Zimmert (1981) and
+      Golod-Shafarevich (1964) via genus theory. The one-page argument uses
+      multiquadratic CM fields and a pigeonhole on ideal classes, and needs no
+      class field tower.
+
+      Using class field towers, it is easily mistaken for the OpenAI result,
+      and it is not: the exponent it produces is 1 + o(1), and it says so
+      ("our construction does not threaten the Spencer-Szemeredi-Trotter
+      ceiling: the exponent we produce is 1 + o(1)", and Remark 8.1 leaves
+      open whether more can be extracted). It is strictly between the one-page
+      argument and the fixed-power refutation, not a third route to the
+      latter.
+
+      The submitter has read it for coherence only. Nothing here asserts it is
+      correct, and no part of the formalization depends on it.
   - title: On sets of distances of n points
     authors: [Paul Erdős]
     year: 1946
