@@ -17,7 +17,7 @@ project:
   license: Apache-2.0
   short_description: >
     Comparator wrapper certifying that the ErdosUnitDistance library proves the
-    literal negation of the uniform-constant form of Erdős's 1946 unit-distance
+    literal negation of the uniform-constant form of Erdős's unit-distance
     conjecture, from a Mathlib-only statement of that negation.
 
 repository:
@@ -39,8 +39,9 @@ result:
   statement: >
     For every C > 0 and every N there exist n ≥ N and an n-point set
     P ⊆ ℝ² whose number of unit-distance pairs exceeds
-    n^(1 + C / log log n). This is the literal negation of Erdős's 1946
-    conjectured bound ν(n) ≤ n^(1 + C / log log n) for an absolute constant C.
+    n^(1 + C / log log n). This is the literal negation of the bound
+    ν(n) ≤ n^(1 + C / log log n), for an absolute constant C, that Erdős
+    conjectured to be optimal in 1994.
   compared_declaration: UnitDistance.erdos_unit_distance_uniform_constant_false
   axioms: [propext, Classical.choice, Quot.sound]
   sorries: 0
@@ -131,7 +132,27 @@ sources:
     year: 1946
     identifier: Amer. Math. Monthly 53 (1946), 248-250
     relationship: background
-    note: The conjecture whose uniform-constant form this refutes.
+    note: >
+      The problem, and the lower bound ν(n) ≥ n^(1 + c / log log n) that the
+      conjecture refuted here asserts is optimal. Theorem 2. This paper is not
+      where the matching upper bound is conjectured; see the next two entries.
+  - title: Some problems in number theory, combinatorics and combinatorial geometry
+    authors: [Paul Erdős]
+    year: 1994
+    identifier: Mathematica Pannonica 5 (1994), 261-269, p. 267
+    relationship: background
+    note: >
+      Where Erdős conjectures that his 1946 lower bound is optimal. That is the
+      uniform-constant statement whose negation is formalized here.
+  - title: Some of my favourite problems which recently have been solved
+    authors: [Paul Erdős]
+    year: 1982
+    identifier: Proceedings of the International Mathematical Conference, 59-79, p. 62
+    relationship: background
+    note: >
+      An earlier and weaker form of the same conjecture, ν(n) ≤ n^(1 + o(1)),
+      recorded so that the two are not confused. This work refutes the stronger
+      1994 form, and the weaker one follows.
   - title: Planar Point Sets with Many Unit Distances
     authors: [OpenAI]
     year: 2026
@@ -154,7 +175,7 @@ automation:
         and proved a number of lemmas directly.
       cost:
         wall_time: >
-          2026-06-11 03:19 UTC to 2026-06-12 07:20 UTC. 1,132 API calls, of
+          2026-06-11 03:19 UTC to 2026-06-12 07:20 UTC. 1,139 API calls, of
           which 1,120 on 06-11 for the formalization itself; the remaining 19
           calls on 06-12 were this repository's landrun fix in verify.sh.
         tokens: >

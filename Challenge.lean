@@ -13,8 +13,9 @@ For a finite `P ⊆ ℝ²`, `unitDist P` counts unordered pairs of points of
 `P` at Euclidean distance exactly `1` (the metric of
 `EuclideanSpace ℝ (Fin 2)`, not the sup-metric of `ℝ × ℝ`).
 
-Erdős (1946) conjectured `ν(n) ≤ n^(1 + C / log log n)` for some
-absolute constant `C` and all sufficiently large `n`.  The theorem below
+Erdős proved `ν(n) ≥ n^(1 + c / log log n)` for some `c > 0` in 1946, and
+conjectured in 1994 that this is optimal: `ν(n) ≤ n^(1 + C / log log n)`
+for some absolute constant `C` and all sufficiently large `n`.  The theorem below
 is the literal negation: for every `C > 0` there are arbitrarily large
 `n` admitting `n`-point sets with more than `n^(1 + C / log log n)`
 unit-distance pairs (L. Alpöge, *Integral points on norm-one tori and
