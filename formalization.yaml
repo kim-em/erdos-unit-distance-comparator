@@ -1,19 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
 # Provenance metadata for the Comparator wrapper around the formalization of
 # Alpöge's disproof of the uniform-constant Erdős unit-distance conjecture.
 #
-# Follows the mathlib-initiative formalization.yaml v0.3 self-reporting format.
+# Follows the mathlib-initiative formalization.yaml v0.4 self-reporting format.
 # The mathematical work lives in kim-em/erdos-unit-distance, which this
 # repository exists only to expose through leanprover/comparator; its own
 # formalization.yaml carries the per-lemma attribution and resource usage.
 
+version: "v0.4"
+
 project:
   name: erdos-unit-distance-comparator
   authors:
-    - name: Kim Morrison
-      github: kim-em
+    - Kim Morrison
   responsible_maintainers:
-    - name: Kim Morrison
-      github: kim-em
+    - Kim Morrison
   license: Apache-2.0
   short_description: >
     Comparator wrapper certifying that the ErdosUnitDistance library proves the
@@ -53,9 +54,6 @@ result:
     be. What it offers is the other trade: Alpöge's one-page argument reaches
     the weaker conclusion from elementary inputs, and the whole of it is
     formalized here with no classical result assumed as a hypothesis.
-provenance:
-  result_origin: source-based
-
 related_formalizations:
   - id: https://github.com/plby/Erdos90
     relationship: independent
@@ -218,8 +216,7 @@ automation:
 review:
   status: self-assessed
   reviewers:
-    - name: Kim Morrison
-      github: kim-em
+    - Kim Morrison
   notes: >
     No independent human review of the mathematics. The submitter, the
     directing session's operator, and the author of this metadata are the same
