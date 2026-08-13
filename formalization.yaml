@@ -92,7 +92,7 @@ sources:
   - title: Integral points on norm-one tori and the Erdős unit-distance exponent
     authors: [Levent Alpöge]
     year: 2026
-    url: https://x.com/__alpoge__/status/2064409100562366543
+    id: https://x.com/__alpoge__/status/2064409100562366543
     relationship: formalizes
     note: >
       A one-page proof posted on X, and the source formalized here. The only
@@ -102,7 +102,7 @@ sources:
       argument.
   - title: Integral points on norm-one tori and the Erdős unit-distance exponent
     year: 2026
-    url: https://www-cdn.anthropic.com/files/4zrzovbb/website/ca35f196125c899a5ad11f011080202a652aef02.pdf
+    id: https://www-cdn.anthropic.com/files/4zrzovbb/website/ca35f196125c899a5ad11f011080202a652aef02.pdf
     relationship: background
     note: >
       A distinct 13-page paper carrying the identical title, recorded so the
@@ -154,7 +154,7 @@ sources:
   - title: Planar Point Sets with Many Unit Distances
     authors: [OpenAI]
     year: 2026
-    url: https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-proof.pdf
+    id: https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-proof.pdf
     relationship: background
     note: >
       The fixed-power-gain refutation, not used here. Attributing the unbylined
