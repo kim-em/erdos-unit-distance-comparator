@@ -37,6 +37,19 @@ Expected final output: `Your solution is okay!`)
 The same script runs in CI on every push — see the badge/workflow under
 `.github/workflows/comparator.yml`.
 
+## In the Palomar registry
+
+Registered as
+[PALOMAR-2026-08-08-000001](https://palomar-registry.org/entry.html?id=PALOMAR-2026-08-08-000001),
+which runs the same comparison itself and publishes a rendered, hoverable
+`Challenge.lean` beside the record, so the statement above can be read without
+cloning anything.
+
+A registered render is immutable: the bytes are what the record's hash is of.
+So an improvement to how Palomar draws one reaches a reader through a new
+version rather than by rewriting an old record, and a new version needs a
+commit that has not been registered.
+
 ## Note for NixOS users
 
 landrun needs the Nix store mounted read-only in its sandbox; wrap it as
