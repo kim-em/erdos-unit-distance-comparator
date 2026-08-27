@@ -10,12 +10,25 @@ TOOLCHAIN_TAG=$(sed -e 's/^leanprover\/lean4://' lean-toolchain | tr -d '[:space
 WORK="${COMPARATOR_WORK:-$HOME/.cache/erdos-comparator}"
 mkdir -p "$WORK"
 
+# A tool need not be tagged for every Lean patch release: comparator stops at
+# v4.32.0 where the toolchain is v4.32.2.  Fall back to the .0 tag of the same
+# minor series, which is the release the tool was cut against.
+resolve_tag() {
+  local repo="$1" tag="$2"
+  if git ls-remote --exit-code --tags "https://github.com/$repo" \
+      "refs/tags/$tag" >/dev/null 2>&1; then
+    printf '%s' "$tag"
+  else
+    printf '%s' "$tag" | sed -E 's/^(v[0-9]+\.[0-9]+)\.[0-9]+$/\1.0/'
+  fi
+}
+
 if [ ! -d "$WORK/comparator" ]; then
-  git clone --branch "$TOOLCHAIN_TAG" --depth 1 \
+  git clone --branch "$(resolve_tag leanprover/comparator "$TOOLCHAIN_TAG")" --depth 1 \
     https://github.com/leanprover/comparator "$WORK/comparator"
 fi
 if [ ! -d "$WORK/lean4export" ]; then
-  git clone --branch "$TOOLCHAIN_TAG" --depth 1 \
+  git clone --branch "$(resolve_tag leanprover/lean4export "$TOOLCHAIN_TAG")" --depth 1 \
     https://github.com/leanprover/lean4export "$WORK/lean4export"
 fi
 (cd "$WORK/comparator" && lake build)
