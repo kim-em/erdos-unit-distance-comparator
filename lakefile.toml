@@ -4,7 +4,7 @@ defaultTargets = ["Challenge", "Solution"]
 [[require]]
 name = "ErdosUnitDistance"
 git = "https://github.com/kim-em/erdos-unit-distance.git"
-rev = "cd25be5865a60b879fd609b5a53fc828ed45dafb"
+rev = "1ea6e75d0359443c32e9129dc2ff538b0e0d5521"
 
 [[lean_lib]]
 name = "Challenge"
